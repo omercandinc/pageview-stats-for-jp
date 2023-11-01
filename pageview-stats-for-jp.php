@@ -1,5 +1,27 @@
 <?php
 
+function get_post_views($post_id) {
+    if (function_exists('stats_get_csv')) {
+        $args = array(
+            'days' => -1,
+            'limit' => -1,
+            'post_id' => $post_id
+        );
+        $result = stats_get_csv('postviews', $args);
+        $views = $result[0]['views'];
+        return $views;
+    } else {
+        return "Jetpack istatistiklerine ulaşılamıyor.";
+    }
+}
+
+function filter_the_content($content) {
+    $post_id = get_the_ID();
+    $views = get_post_views($post_id);
+    $content .= "<p>Okunma Sayısı: " . $views . "</p>";
+    return $content;
+}
+add_filter('the_content', 'filter_the_content');
 /**
  * The plugin bootstrap file
  *

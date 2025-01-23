@@ -1,3 +1,5 @@
+[Pratik Hesaplama](https://pratikhesaplama.com/)
+
 === Plugin Name ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://twitter.com/omercandinc/
